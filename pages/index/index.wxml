@@ -1,0 +1,35 @@
+<view class="container">
+  <add-tip vue-id="8dd740cc-1" tip="{{tip}}" duration="{{duration}}" bind:__l="__l"></add-tip>
+  <v-tabs class="tab" vue-id="8dd740cc-1" tabs="{{tabs}}" value="{{current}}"
+    data-event-opts="{{[['^change',[['changeTab']]],['^input',[['__set_model',['','current','$event',[]]]]]]}}"
+    bind:change="__e" bind:input="__e" bind:__l="__l"></v-tabs>
+  <view data-ref="coupon" class="coupon vue-ref">
+    <block wx:for="{{couponList}}" wx:for-item="v" wx:for-index="i" wx:key="i">
+      <view data-event-opts="{{[['tap',[['toCoupon',[i]]]]]}}" class="item" bindtap="__e">
+        <view class="top">
+          <view class="left">
+            <view class="content">
+              <image class="icon" src="{{v.icon}}" mode="widthFix"></image>
+              <view class="name">{{v.name}}</view>
+            </view>
+            <block wx:if="{{v.type==1}}">
+              <view class="text">天天可领</view>
+            </block>
+            <block wx:else>
+              <block wx:if="{{v.type==2}}">
+                <view class="text">限时秒杀</view>
+              </block>
+            </block>
+          </view>
+          <view class="right">免费领取</view>
+        </view>
+        <view class="bottom">
+          <view class="text">{{v.des}}</view>
+        </view>
+        <view class="bottom">
+          <image src="{{v.bannerPic}}" mode="widthFix"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
